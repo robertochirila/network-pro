@@ -1,0 +1,12 @@
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
+.nav-items {
+  color: aliceblue;
+  text-decoration: none;
+  margin: 0 1rem;
+}
