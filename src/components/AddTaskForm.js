@@ -19,7 +19,6 @@ export class AddTaskForm extends Component {
       step: 0,
       counter: counter + 1,
     });
-    console.log("here");
   };
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
