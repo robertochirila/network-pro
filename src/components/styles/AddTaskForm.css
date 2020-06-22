@@ -1,0 +1,22 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+}
+.task-form-input {
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 0.8rem;
+}
+.task-form-input:focus {
+  outline: none;
+}
+.task-form-button {
+  border: 1px solid;
+  color: #ffffff;
+  background: transparent;
+  margin: 1rem 0;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+}
+.task-form-button:focus {
+  outline: none;
+}
