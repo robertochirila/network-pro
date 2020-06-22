@@ -5,35 +5,69 @@ export class AddTaskForm extends Component {
     super(props);
     this.state = {
       taskName: "",
+      taskCategory: "",
       counter: 0,
+      step: 0,
     };
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    const { taskName, counter } = this.state;
-    this.setState({ taskName: "", counter: counter + 1 });
+    const { taskName, taskCategory, counter, step } = this.state;
+    this.setState({
+      taskName: "",
+      taskCategory: "",
+      step: 0,
+      counter: counter + 1,
+    });
+    console.log("here");
   };
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  handleIncrement = () => {
+    const { step } = this.state;
+    this.setState({ step: step + 1 });
+  };
   render() {
-    return (
-      <div>
-        <form className="task-form" onSubmit={this.handleSubmit}>
-          <label className="task-form-label">Add a task</label>
-          <input
-            className="task-form-input"
-            type="text"
-            placeholer="Add a task"
-            name="taskName"
-            value={this.state.taskName}
-            onChange={this.handleInputChange}
-          ></input>
-          <button className="task-form-button">Submit</button>
-          <h3>{this.state.counter} Tasks Added</h3>
-        </form>
-      </div>
-    );
+    const { step } = this.state;
+    switch (step) {
+      case 0:
+        return (
+          <div className="task-form">
+            <label className="task-form-label">Add a task</label>
+            <input
+              className="task-form-input"
+              type="text"
+              placeholer="Add a task"
+              name="taskName"
+              value={this.state.taskName}
+              onChange={this.handleInputChange}
+            ></input>
+            <button className="task-form-button" onClick={this.handleIncrement}>
+              Next
+            </button>
+            <h3>{this.state.counter} Tasks Added</h3>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="task-form">
+            <label className="task-form-label">Select Category</label>
+            <input
+              className="task-form-input"
+              type="text"
+              placeholer="Add a task"
+              name="taskCategory"
+              value={this.state.taskCategory}
+              onChange={this.handleInputChange}
+            ></input>
+            <button className="task-form-button" onClick={this.handleSubmit}>
+              Submit
+            </button>
+            <h3>{this.state.counter} Tasks Added</h3>
+          </div>
+        );
+    }
   }
 }
 
