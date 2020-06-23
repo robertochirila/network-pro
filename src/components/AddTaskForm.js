@@ -81,9 +81,4 @@ class AddTaskForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  task: state.task.task,
-  tasks: state.task.tasks,
-});
-
-export default connect(mapStateToProps, { createTask })(AddTaskForm);
+export default connect(null, { createTask })(AddTaskForm);

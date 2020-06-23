@@ -1,4 +1,4 @@
-import { NEW_TASK } from "../actions/types";
+import { NEW_TASK, DISPLAY_TASKS } from "../actions/types";
 
 const initialState = {
   tasks: [],
@@ -12,8 +12,13 @@ export default function (state = initialState, action) {
       //console.log(state.tasks);
       return {
         ...state,
-        task: action.payload,
         tasks: [...state.tasks, action.payload],
+      };
+    case DISPLAY_TASKS:
+      console.log("3. return the state tasks in the reducer");
+      return {
+        ...state,
+        tasks: state.tasks,
       };
     default:
       return state;
