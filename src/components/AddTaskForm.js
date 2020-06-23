@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { createTask } from "../actions/taskActions";
+import { connect } from "react-redux";
 
-export class AddTaskForm extends Component {
+class AddTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +15,22 @@ export class AddTaskForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { taskName, taskCategory, counter, step } = this.state;
-    this.setState({
+
+    const newTask = {
+      taskName: taskName,
+      taskCategory: taskCategory,
+    };
+
+    console.log("1. call create task in the form component");
+
+    this.props.createTask(newTask);
+
+    /*this.setState({
       taskName: "",
       taskCategory: "",
       step: 0,
       counter: counter + 1,
-    });
+    });*/
   };
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -70,4 +82,8 @@ export class AddTaskForm extends Component {
   }
 }
 
-export default AddTaskForm;
+const mapStateToProps = (state) => ({
+  task: state.task.task,
+});
+
+export default connect(mapStateToProps, { createTask })(AddTaskForm);
