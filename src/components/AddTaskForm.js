@@ -22,15 +22,14 @@ class AddTaskForm extends Component {
     };
 
     console.log("1. call create task in the form component");
-
     this.props.createTask(newTask);
 
-    /*this.setState({
+    this.setState({
       taskName: "",
       taskCategory: "",
       step: 0,
       counter: counter + 1,
-    });*/
+    });
   };
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -84,6 +83,7 @@ class AddTaskForm extends Component {
 
 const mapStateToProps = (state) => ({
   task: state.task.task,
+  tasks: state.task.tasks,
 });
 
 export default connect(mapStateToProps, { createTask })(AddTaskForm);
