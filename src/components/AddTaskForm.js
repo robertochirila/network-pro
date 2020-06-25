@@ -21,7 +21,6 @@ class AddTaskForm extends Component {
       taskCategory: taskCategory,
     };
 
-    console.log("1. call create task in the form component");
     this.props.createTask(newTask);
 
     this.setState({

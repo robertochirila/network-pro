@@ -4,7 +4,6 @@ import { displayTasks } from "../actions/taskActions";
 
 class Tasks extends Component {
   componentDidMount() {
-    console.log("1. dispatch display action from view");
     this.props.displayTasks();
   }
   render() {
