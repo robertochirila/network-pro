@@ -11,11 +11,6 @@ class Navigation extends Component {
     else if (event.target.id === "Leaderboards") correspondingStep = 4;
     console.log("1. Call navigate action");
     this.props.navigate(correspondingStep);
-    // dispatch an action with the step as argument to reducer
-    // reducer updates the state (step)
-    // main component renders the component
-
-    console.log(correspondingStep);
   };
   render() {
     return (
