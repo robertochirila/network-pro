@@ -5,11 +5,11 @@ import { navigate } from "../actions/navActions";
 class Navigation extends Component {
   handleNavigation = (event) => {
     let correspondingStep;
-    if (event.target.id === "Profile") correspondingStep = 1;
+    if (event.target.id === "Tasks") correspondingStep = 1;
     else if (event.target.id === "Statistics") correspondingStep = 2;
     else if (event.target.id === "Network") correspondingStep = 3;
     else if (event.target.id === "Leaderboards") correspondingStep = 4;
-    console.log("1. Call navigate action");
+    else if (event.target.id === "Home") correspondingStep = 0;
     this.props.navigate(correspondingStep);
   };
   render() {
@@ -17,11 +17,19 @@ class Navigation extends Component {
       <nav className="nav">
         <a
           href="#"
-          id="Profile"
+          id="Home"
           className="nav-items"
           onClick={this.handleNavigation}
         >
-          Profile
+          Home
+        </a>
+        <a
+          href="#"
+          id="Tasks"
+          className="nav-items"
+          onClick={this.handleNavigation}
+        >
+          Tasks
         </a>{" "}
         <a
           href="#"

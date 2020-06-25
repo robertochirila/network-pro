@@ -1,13 +1,26 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { displayTasks } from "../actions/taskActions";
 
-export class Profile extends Component {
+class Profile extends Component {
+  componentDidMount() {
+    this.props.displayTasks();
+  }
   render() {
-    return (
-      <div>
-        <h1>Profile Component</h1>
+    const { tasks } = this.props;
+    const renderTasks = tasks.map((task, index) => (
+      <div key={index} className="card">
+        <p className="card-paragraph">{task.taskName}</p>
+        <p className="card-paragraph">{task.taskCategory}</p>
       </div>
-    );
+    ));
+
+    return <div>{renderTasks}</div>;
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  tasks: state.task.tasks,
+});
+
+export default connect(mapStateToProps, { displayTasks })(Profile);

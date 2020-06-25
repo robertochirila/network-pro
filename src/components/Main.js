@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import AddTaskForm from "./AddTaskForm";
 import Tasks from "./Tasks";
-import { Profile } from "./Profile";
 import { Statistics } from "./Statistics";
 import { Network } from "./Network";
 import { Leaderboards } from "./Leaderboards";
@@ -16,13 +15,12 @@ class Main extends Component {
         return (
           <React.Fragment>
             <AddTaskForm />
-            <Tasks />
           </React.Fragment>
         );
       case 1:
         return (
           <React.Fragment>
-            <Profile />
+            <Tasks />
           </React.Fragment>
         );
       case 2:
