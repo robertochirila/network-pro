@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 export class Leaderboards extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <h1>Leaderboards Component</h1>
+      </div>
+    );
   }
 }
 

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import AddTaskForm from "./AddTaskForm";
 import Tasks from "./Tasks";
 import { Profile } from "./Profile";
@@ -6,15 +8,9 @@ import { Statistics } from "./Statistics";
 import { Network } from "./Network";
 import { Leaderboards } from "./Leaderboards";
 
-export class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 0,
-    };
-  }
+class Main extends Component {
   render() {
-    const { step } = this.state;
+    const { step } = this.props;
     switch (step) {
       case 0:
         return (
@@ -48,7 +44,11 @@ export class Main extends Component {
           </React.Fragment>
         );
     }
+    return <div></div>;
   }
 }
+const mapStateToProps = (state) => ({
+  step: state.nav.step,
+});
 
-export default Main;
+export default connect(mapStateToProps)(Main);
