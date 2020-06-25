@@ -1,19 +1,55 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { navigate } from "../actions/navActions";
 
-export class Navigation extends Component {
+class Navigation extends Component {
+  handleNavigation = (event) => {
+    let correspondingStep;
+    if (event.target.id === "Profile") correspondingStep = 1;
+    else if (event.target.id === "Statistics") correspondingStep = 2;
+    else if (event.target.id === "Network") correspondingStep = 3;
+    else if (event.target.id === "Leaderboards") correspondingStep = 4;
+    console.log("1. Call navigate action");
+    this.props.navigate(correspondingStep);
+    // dispatch an action with the step as argument to reducer
+    // reducer updates the state (step)
+    // main component renders the component
+
+    console.log(correspondingStep);
+  };
   render() {
     return (
       <nav className="nav">
-        <a href="/html/" className="nav-items">
+        <a
+          href="#"
+          id="Profile"
+          className="nav-items"
+          onClick={this.handleNavigation}
+        >
           Profile
         </a>{" "}
-        <a href="/css/" className="nav-items">
+        <a
+          href="#"
+          id="Statistics"
+          className="nav-items"
+          onClick={this.handleNavigation}
+        >
           Statistics
         </a>{" "}
-        <a href="/js/" className="nav-items">
+        <a
+          href="#"
+          id="Network"
+          className="nav-items"
+          onClick={this.handleNavigation}
+        >
           Network
         </a>{" "}
-        <a href="/python/" className="nav-items">
+        <a
+          href="#"
+          id="Leaderboards"
+          className="nav-items"
+          onClick={this.handleNavigation}
+        >
           Leaderboards
         </a>
       </nav>
@@ -21,4 +57,4 @@ export class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default connect(null, { navigate })(Navigation);
