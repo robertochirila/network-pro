@@ -13,4 +13,4 @@ const tasksSchema = new Schema(
 );
 
 const Tasks = mongoose.model("Tasks", tasksSchema);
-module.exports = Expenses;
+module.exports = Tasks;
