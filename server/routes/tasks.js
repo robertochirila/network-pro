@@ -2,13 +2,14 @@ const router = require("express").Router();
 let Tasks = require("../models/Tasks");
 //const auth = require('../middleware/auth')
 
-router.route("/get").get((req, res) => {
+router.route("/").get((req, res) => {
   Tasks.find()
     .then((tasks) => res.json(tasks))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+// REMEMBER TO PASS AUTH AS AN ARGUMENT TO FUNCTION
 
-/*router.post("/add", auth, (req, res) => {
+router.post("/add", (req, res) => {
   const name = req.body.name;
   const category = req.body.category;
 
@@ -21,7 +22,7 @@ router.route("/get").get((req, res) => {
     .save()
     .then(() => res.json("Task added succesfully"))
     .catch((err) => res.status(400).json("Error: ", +err));
-});*/
+});
 /*router.route('/add', auth).post((req, res) => {
     const name = req.body.name
     const category = req.body.category
