@@ -4,16 +4,18 @@ import axios from "axios";
 
 export const createTask = (taskData) => (dispatch) => {
   console.log(taskData);
-  let axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
-    },
-  };
-  axios
-    .post("http://localhost:5000/tasks/add", taskData, axiosConfig)
-    .then((res) => console.log(res.data))
-    .then((err) => console.log(err));
+
+  fetch("http://localhost:5000/tasks/add", {
+    method: "post",
+    body: JSON.stringify(taskData),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("Fetch Post");
+    });
+
   dispatch({
     type: NEW_TASK,
     payload: taskData,
