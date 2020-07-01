@@ -1,6 +1,7 @@
 .task-form {
   display: flex;
   flex-direction: column;
+  width: 300px;
 }
 .task-form-input {
   margin: 0.5rem 0 0 0;
