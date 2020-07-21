@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 
+
 const uri =
   "mongodb+srv://robertochirila:robertomircea@cluster0-bnujd.gcp.mongodb.net/network-pro-db?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });

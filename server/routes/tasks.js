@@ -9,39 +9,24 @@ router.route("/").get((req, res) => {
 });
 // REMEMBER TO PASS AUTH AS AN ARGUMENT TO FUNCTION
 
-router.post("/add", (req, res) => {
-  const name = req.body.name;
-  const category = req.body.category;
-
+router.post('/add', async (req, res) => {
+  const name = req.body.taskName;
+  const category = req.body.taskCategory;
   const newTasks = new Tasks({
     name,
     category,
   });
 
-  newTasks
-    .save()
-    .then(() => res.json("Task added succesfully"))
-    .catch((err) => res.status(400).json("Error: ", +err));
+  try {
+    const item = await newTasks.save();
+    if (!item) throw Error('Something went wrong saving the item');
+
+    res.status(200).json(item);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
 });
-/*router.route('/add', auth).post((req, res) => {
-    const name = req.body.name
-    const category = req.body.category
-    const price = req.body.price
 
-    const newExpense = new Expenses({
-        name,
-        category,
-        price
-    })
-
-    console.log(newExpense)
-
-
-    newExpense.save()
-        .then(() => res.json('Expense added succesfully'))
-        .catch(err => res.status(400).json('Error: ', +err))
-
-})*/
 /*router.delete("/:id", auth, (req, res) => {
   Tasks.findByIdAndDelete(req.params.id)
     .then(() => res.json("Task deleted."))
