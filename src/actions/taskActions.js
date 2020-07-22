@@ -18,14 +18,16 @@ export const createTask = (taskData) => (dispatch) => {
 
 export const displayTasks = () => (dispatch) => {
 
-  /*axios.get('http://localhost:5000/tasks')
+  console.log("here")
+
+  axios.get('http://localhost:5000/tasks')
             .then(res => dispatch({
               type: DISPLAY_TASKS,
               payload: res.data,
             }))
-            .catch(err => console.log(err))*/
-  dispatch({
+            .catch(err => console.log(err))
+  /*dispatch({
     type: DISPLAY_TASKS,
     payload: "",
-  });
+  });*/
 };
