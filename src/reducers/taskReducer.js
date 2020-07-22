@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
     case DISPLAY_TASKS:
       return {
         ...state,
-        tasks: state.tasks,
+        tasks: action.payload,
       };
     default:
       return state;

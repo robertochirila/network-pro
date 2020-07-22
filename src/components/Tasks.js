@@ -8,10 +8,11 @@ class Tasks extends Component {
   }
   render() {
     const { tasks } = this.props;
+    console.log(tasks)
     const renderTasks = tasks.map((task, index) => (
       <div key={index} className="card">
-        <p className="card-paragraph">{task.taskName}</p>
-        <p className="card-paragraph">{task.taskCategory}</p>
+        <p className="card-paragraph">{task.name}</p>
+        <p className="card-paragraph">{task.category}</p>
       </div>
     ));
 

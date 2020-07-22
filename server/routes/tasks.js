@@ -2,10 +2,22 @@ const router = require("express").Router();
 let Tasks = require("../models/Tasks");
 //const auth = require('../middleware/auth')
 
-router.route("/").get((req, res) => {
+/*router.route('/').get((req, res) => {
+  console.log(res)
   Tasks.find()
     .then((tasks) => res.json(tasks))
     .catch((err) => res.status(400).json("Error: " + err));
+});*/
+
+router.get('/', async (req, res) => {
+  try {
+    const tasks = await Tasks.find();
+    if (!tasks) throw Error('No items');
+
+    res.status(200).json(tasks);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
 });
 // REMEMBER TO PASS AUTH AS AN ARGUMENT TO FUNCTION
 
